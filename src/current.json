@@ -1,0 +1,43 @@
+{
+    "coord": {
+        "lon": -101,
+        "lat": 25.42
+    },
+    "weather": [
+        {
+            "id": 803,
+            "main": "Clouds",
+            "description": "broken clouds",
+            "icon": "04d"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 5.35,
+        "feels_like": 0.71,
+        "temp_min": 1.11,
+        "temp_max": 9.44,
+        "pressure": 1030,
+        "humidity": 40
+    },
+    "visibility": 16093,
+    "wind": {
+        "speed": 2.6,
+        "deg": 360
+    },
+    "clouds": {
+        "all": 75
+    },
+    "dt": 1582733680,
+    "sys": {
+        "type": 1,
+        "id": 7118,
+        "country": "MX",
+        "sunrise": 1582722618,
+        "sunset": 1582764238
+    },
+    "timezone": -21600,
+    "id": 3988086,
+    "name": "Saltillo",
+    "cod": 200
+}
