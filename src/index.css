@@ -24,12 +24,30 @@ header{
 }
 
 main{
-  background-image: url('./assets/sunny.png');
+  background-image: url('./assets/clear.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   width: 100%;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.clear{
+  background-image: url('./assets/clear.png');
+}
+
+.clouds{
+  background-image: url('./assets/sunny.png');
+}
+
+.rain{
+  background-image: url('./assets/tunder.png');
+}
+
+.some{
+  background-image: url('./assets/cloudy.png');
 }
 
 footer{
