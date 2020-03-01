@@ -1,5 +1,4 @@
 import React from 'react';
-import Slider from '@farbenmeer/react-spring-slider';
 
 import Feels from './Feels';
 import Minmax from './MinMax';
@@ -39,6 +38,7 @@ const Card = props => {
                                 <Feels feelsGrades={props.feelsLike} iconUrl={props.iconUrl} />
                                 <Minmax min={props.min} max={props.max} />
                             </div>
+                            <p className='size'>Try it on a wider device</p>
                             <div className='container-hours' >
                                 {y.map(dc => <DayCards key={dc} />)}
                             </div>
