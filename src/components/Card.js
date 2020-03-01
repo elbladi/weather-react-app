@@ -23,28 +23,28 @@ const Card = props => {
         };
     };
 
-    const x = [1, 2, 3];
+    const x = [1, 2, 3, 4];
+    const y = [...x, 5, 6];
 
     return (
         <React.Fragment>
             <div className='container'>
-                {getIcon(props.mainIcon)}
-                <div className='container-temp' >{props.temp}° C</div>
-                <div className='container-details' >
-                    <Feels feelsGrades={props.feelsLike} iconUrl={props.iconUrl} />
-                    <Minmax min={props.min} max={props.max} />
-                </div>
 
-                <Slider
-                    activeIndex={0}
-                    auto={0}
-                    hasBullets
-                >
-                    {x.map(card => (
-                        <DayCards key={card} />
-                    ))}
-
-                </Slider>
+                {x.map(card => {
+                    return (
+                        <div key={card} className='displayed-cards'>
+                            {getIcon(props.mainIcon)}
+                            <div className='container-temp' >{props.temp}° C</div>
+                            <div className='container-details' >
+                                <Feels feelsGrades={props.feelsLike} iconUrl={props.iconUrl} />
+                                <Minmax min={props.min} max={props.max} />
+                            </div>
+                            <div className='container-hours' >
+                                {y.map(dc => <DayCards key={dc} />)}
+                            </div>
+                        </div>
+                    )
+                })}
             </div>
         </React.Fragment>
     );
