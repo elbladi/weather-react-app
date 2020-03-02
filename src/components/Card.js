@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Feels from './Feels';
 import Minmax from './MinMax';
@@ -8,9 +8,18 @@ import { ReactComponent as Sunny } from '../assets/sunny.svg';
 import { ReactComponent as Tunder } from '../assets/tunder.svg';
 
 import './Card.css';
+import response from '../current.json';
 import DayCards from './DayCards';
 
+const MONTNAMES = [
+    "January", "February", "March",
+    "April", "May", "June", "July",
+    "August", "September", "October",
+    "November", "December"
+];
 const Card = props => {
+
+    const [currentWeather, setCurrentWeather] = useState();
 
     const getIcon = (type) => {
         switch (type) {
@@ -22,29 +31,59 @@ const Card = props => {
         };
     };
 
-    const x = [1, 2, 3, 4];
-    const y = [...x, 5, 6];
+    useEffect(() => {
+        const weather = {
+            id: response.dt,
+            icon: response,
+            temp: response.main.temp.toFixed(1),
+            feelsLike: response.main.feels_like.toFixed(1),
+            iconUrl: `http://openweathermap.org/img/w/${response.weather[0].icon}.png`,
+            min: response.main.temp_min.toFixed(1),
+            max: response.main.temp_max.toFixed(1),
+        };
+        setCurrentWeather(weather);
+    }, [setCurrentWeather]);
+
 
     return (
         <React.Fragment>
             <div className='container'>
+                {currentWeather &&
+                    props.cards.map(card => {
 
-                {x.map(card => {
-                    return (
-                        <div key={card} className='displayed-cards'>
-                            {getIcon(props.mainIcon)}
-                            <div className='container-temp' >{props.temp}° C</div>
-                            <div className='container-details' >
-                                <Feels feelsGrades={props.feelsLike} iconUrl={props.iconUrl} />
-                                <Minmax min={props.min} max={props.max} />
+                        let date = new Date(Date.parse(card[0].dt_txt));
+                        date = MONTNAMES[date.getMonth()] + '/' + date.getDate() + '/' + date.getFullYear();
+
+                        return (
+                            <div key={card[0].dt} className='displayed-cards'>
+                                {getIcon(card[0].weather[0].main)}
+                                <div className='container-temp' >{card[0].main.temp.toFixed(1)}° C</div>
+                                <div>{date}</div>
+                                <div className='container-details' >
+                                    <Feels feelsGrades={card[0].main.feels_like.toFixed(1)} iconUrl={`http://openweathermap.org/img/w/${card[0].weather[0].icon}.png`} />
+                                    <Minmax min={card[0].main.temp_min.toFixed(1)} max={card[0].main.temp_max.toFixed(1)} />
+                                </div>
+                                <p className='size'>Try it on a wider device</p>
+                                <div className='container-hours' >
+                                    {card.map(dc => {
+                                        let hour = new Date(Date.parse(dc.dt_txt));
+                                        hour = hour.getHours() + ':' + hour.getMinutes();
+                                        return (
+                                            <DayCards
+                                                key={dc}
+                                                hour={hour}
+                                                temp={dc.main.temp.toFixed(1)}
+                                                min={dc.main.temp_min.toFixed(1)}
+                                                max={dc.main.temp_max.toFixed(1)}
+                                            />
+                                        )
+                                    }
+                                    )}
+                                </div>
                             </div>
-                            <p className='size'>Try it on a wider device</p>
-                            <div className='container-hours' >
-                                {y.map(dc => <DayCards key={dc} />)}
-                            </div>
-                        </div>
-                    )
-                })}
+                        )
+                    })
+                }
             </div>
         </React.Fragment>
     );

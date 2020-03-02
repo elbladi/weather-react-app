@@ -6,13 +6,11 @@ const DayCards = props => {
 
     return (
         <div className='daily-cards'>
-
             <div className='daily-card'>
-                <div className='daily-card-day' >18</div>
-                <div className='daily-card-temp' >16.4º</div>
-                <Minmax fromSingleCard min='5' max='10' />
+                <div className='daily-card-day' >{props.hour}</div>
+                <div className='daily-card-temp' >{props.temp}º</div>
+                <Minmax fromSingleCard min={props.min} max={props.max} />
             </div>
-
         </div>
     )
 };
