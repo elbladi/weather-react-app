@@ -14,17 +14,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 1rem;
     scroll-snap-align: start;
 }
 
 .container-hours{
-    width: 21rem;
+    width: 100vw;
     display: flex;
     overflow-x: auto;
     height: 30%;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
+    position: relative;
+    top: 6%;
 }
 
 .daily-cards{
@@ -32,7 +33,7 @@
     justify-content: space-around;
     height: 100%;
     scroll-snap-align: start;
-    padding: 0 8%;
+    padding: 0 7%;
 }
 .jDMtMC{
     height: 30%!important;
@@ -86,8 +87,8 @@
 
 .container-details{
     display: flex;
-    justify-content: space-between;
-    width: 90vw;
+    justify-content: center;
+    width: 100vw;
 }
 
 .container-feels{
@@ -96,6 +97,7 @@
     font-size: 1.3rem;
     justify-content: space-evenly;
     align-items: center;
+    margin: 0 auto;
 }
 
 .container-feels img{
@@ -105,7 +107,8 @@
 .container-range{
     display: flex;
     justify-content: space-around;
-    width: 50%;
+    width: 40%;
+    margin: 0 auto;
 }
 
 .range{

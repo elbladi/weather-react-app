@@ -2,7 +2,7 @@ import React, { Component, Suspense } from 'react';
 import './Layout.css';
 
 class Layout extends Component {
-   
+
     render() {
         const style = this.props.mainIconImage;
         const classes = [];
@@ -35,7 +35,7 @@ class Layout extends Component {
                     <div className='background' />
                     {this.props.children}
                     <footer>
-                        <div>Saltillo</div>
+                        <div>{this.props.city}</div>
                     </footer>
                 </main>
             </Suspense>

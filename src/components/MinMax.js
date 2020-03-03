@@ -1,5 +1,4 @@
 import React from 'react';
-import { ReactComponent as Arrow } from '../assets/upArrow.svg';
 import PropTypes from 'prop-types';
 
 const Minmax = props => {
@@ -13,12 +12,10 @@ const Minmax = props => {
     return (
         <div className={classes.join(' ')}>
             <div className='range'>
-                <Arrow className='minArrow' />
-                <div>{props.min}°</div>
+                <div>Min: {props.min}°</div>
             </div>
             <div className='range'>
-                <Arrow className='maxArrow' />
-                <div>{props.max}°</div>
+                <div>Max: {props.max}°</div>
             </div>
         </div>
     )

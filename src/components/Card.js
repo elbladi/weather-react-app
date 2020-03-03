@@ -52,7 +52,7 @@ const Card = props => {
                     props.cards.map(card => {
 
                         let date = new Date(Date.parse(card[0].dt_txt));
-                        date = MONTNAMES[date.getMonth()] + '/' + date.getDate() + '/' + date.getFullYear();
+                        date = date.toString().substring(0, 3) + ' ' + MONTNAMES[date.getMonth()] + '/' + date.getDate() + '/' + date.getFullYear();
 
                         return (
                             <div key={card[0].dt} className='displayed-cards'>
@@ -66,15 +66,12 @@ const Card = props => {
                                 <p className='size'>Try it on a wider device</p>
                                 <div className='container-hours' >
                                     {card.map(dc => {
-                                        let hour = new Date(Date.parse(dc.dt_txt));
-                                        hour = hour.getHours() + ':' + hour.getMinutes();
+                                        let hour = dc.dt_txt.substring(11, 16);
                                         return (
                                             <DayCards
-                                                key={dc}
+                                                key={dc.dt}
                                                 hour={hour}
                                                 temp={dc.main.temp.toFixed(1)}
-                                                min={dc.main.temp_min.toFixed(1)}
-                                                max={dc.main.temp_max.toFixed(1)}
                                             />
                                         )
                                     }

@@ -1,5 +1,4 @@
 import React from 'react';
-import Minmax from './MinMax';
 
 const DayCards = props => {
 
@@ -9,7 +8,8 @@ const DayCards = props => {
             <div className='daily-card'>
                 <div className='daily-card-day' >{props.hour}</div>
                 <div className='daily-card-temp' >{props.temp}º</div>
-                <Minmax fromSingleCard min={props.min} max={props.max} />
+                <div>{props.min}</div>
+                <div>{props.max}</div>
             </div>
         </div>
     )
