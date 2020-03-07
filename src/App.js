@@ -7,26 +7,25 @@ import Spinner from './components/Spinner/Spinner';
 
 import './App.css';
 
-const apiKey = 'APIKEY';
+const apiKey = 'YOUR_API_KEY';
 
 const App = () => {
   const [cards, setCards] = useState();
   const [city, setCity] = useState();
   const [error, setError] = useState();
 
-  let coordinates = {};
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(position => {
-      coordinates.lat = position.coords.latitude;
-      coordinates.lon = position.coords.longitude;
-    });
-  };
 
   useEffect(() => {
     let dates = {};
+    let coordinates = {};
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        coordinates.lat = position.coords.latitude;
+        coordinates.lon = position.coords.longitude;
+      });
+    };
 
     if (coordinates.lat) {
-      console.log('from coordinates');
       axios.get(`https://api.openweathermap.org/data/2.5/forecast?appid=${apiKey}&units=metric&lat=${coordinates.lat}&lon=${coordinates.lon}`)
         .then(response => {
           response.data.list.map(card => {
@@ -36,6 +35,7 @@ const App = () => {
             } else {
               dates[currentDay] = [card];
             };
+            return null;
           });
           const newCardsFormat = Object.values(dates);
           setCity(response.data.city.name);
@@ -43,7 +43,6 @@ const App = () => {
         })
         .catch(err => setError(err));
     } else {
-      console.log('from hardcore');
       axios.get(`https://api.openweathermap.org/data/2.5/forecast?appid=${apiKey}&units=metric&q=saltillo`)
         .then(response => {
           response.data.list.map(card => {
@@ -53,6 +52,7 @@ const App = () => {
             } else {
               dates[currentDay] = [card];
             };
+            return null;
           });
           const newCardsFormat = Object.values(dates);
           setCity(response.data.city.name);
@@ -60,7 +60,7 @@ const App = () => {
         })
         .catch(err => setError(err));
     };
-  }, [setCards]);
+  }, []);
 
   return (
     <React.Fragment>

@@ -28,6 +28,7 @@
     top: 6%;
 }
 
+
 .daily-cards{
     display: flex;
     justify-content: space-around;
@@ -151,4 +152,64 @@
     .displayed-cards{
         padding: 0;
     }
+    .displayed-cards,
+    .container-details,
+    .container-hours{
+        width: 100%;
+    }
+    .container-details{
+        min-width: 330px;
+    }
+    
+      
 }
+
+@media (min-width:501px){
+    .container-details{
+        min-width: 74vw;
+    }
+    .container-date{
+        font-size: 1.5rem;
+        margin: 2% 0;
+    }
+    
+.container::-webkit-scrollbar,
+.container-hours::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+   /* Estilos barra (thumb) de scroll */
+  .container::-webkit-scrollbar-thumb,
+  .container-hours::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+  }
+  
+  .container::-webkit-scrollbar-thumb:active,
+  .container-hours::-webkit-scrollbar-thumb:active{
+    background-color: #999999;
+  }
+  
+  .container::-webkit-scrollbar-thumb:hover,
+  .container-hours::-webkit-scrollbar-thumb:hover{
+    background: #b3b3b3;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+  }
+  
+   /* Estilos track de scroll */
+  .container::-webkit-scrollbar-track,
+  .container-hours::-webkit-scrollbar-track {
+    background: #e1e1e1;
+    border-radius: 4px;
+  }
+  
+  .container::-webkit-scrollbar-track:hover, 
+  .container::-webkit-scrollbar-track:active,
+  .container-hours::-webkit-scrollbar-track:hover, 
+  .container-hours::-webkit-scrollbar-track:active
+   {
+    background: #d4d4d4;
+  }
+}   
+
